@@ -1,0 +1,28 @@
+name: Build Rust Library
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: depot-ubuntu-24.04-32
+
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v3
+        with:
+          repository: fasterthanlime/rust
+          ref: api-fingerprinting-merged-2025-04-23
+
+      - name: Setup bootstrap.toml
+        run: |
+          echo '
+          profile = "compiler"
+          ' > bootstrap.toml
+
+      - name: Build library
+        run: ./x.py build library
