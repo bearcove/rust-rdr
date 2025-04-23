@@ -16,7 +16,8 @@ jobs:
         uses: actions/checkout@v3
         with:
           repository: fasterthanlime/rust
-          ref: api-fingerprinting-merged-2025-04-23
+          ref: 72bebfdb13425c15f9b2084d78ec9004705b9361
+          fetch-depth: 1
 
       - name: Setup bootstrap.toml
         run: |
